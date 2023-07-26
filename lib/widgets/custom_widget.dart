@@ -40,13 +40,11 @@ class CustomWidget extends StatelessWidget {
         width: 1,
         height: 1,
         color: Colors.black,
-        child: SingleChildScrollView(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: List.generate(
-              10,
-              (index) => const SizedBox(width: 4, height: 1),
-            ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(
+            10,
+            (index) => const SizedBox(width: 2, height: 1),
           ),
         ),
       ),
@@ -55,8 +53,7 @@ class CustomWidget extends StatelessWidget {
 
   String _getShortenedText(context) {
     const int availableSpace = 60;
-     int maxLength = (MediaQuery.of(context).size.width * 0.22).toInt();
-
+    int maxLength = 100;
     int maxTextLength = maxLength - availableSpace;
     if (text.length > maxTextLength) {
       return text.substring(0, maxTextLength - 3) + "...";

@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
           return CustomWidget(
             text: index.isEven
                 ? "Какой-то текст"
-                : "Какой-то текст, который может быть сокращен сокращен сокращен сокращен сокращен",
+                : "Какой-то текст, который может быть сокращен сокращен сокращен сокращен сокращен сокращен0 сокращен1",
             isSelected: index.isEven ? true : false,
           );
         }),

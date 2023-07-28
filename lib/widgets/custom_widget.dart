@@ -13,52 +13,35 @@ class CustomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          Text(
-            _getShortenedText(context),
-            overflow: TextOverflow.ellipsis,
+          Expanded(
+            child: Row(
+              children: [
+                Flexible(
+                  child: Text(
+                    text,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                Expanded(
+                  // flex: 5,
+                  child: Container(
+                    height: 1,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
           ),
-          const SizedBox(width: 10),
-          _buildDottedLine(),
-          const SizedBox(width: 10),
           Checkbox(
             value: isSelected,
-            onChanged: (value) {
-              //
-            },
+            onChanged: (val) {},
           ),
         ],
       ),
     );
-  }
-
-  Widget _buildDottedLine() {
-    return Expanded(
-      child: Container(
-        width: 1,
-        height: 1,
-        color: Colors.black,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(
-            10,
-            (index) => const SizedBox(width: 2, height: 1),
-          ),
-        ),
-      ),
-    );
-  }
-
-  String _getShortenedText(context) {
-    const int availableSpace = 60;
-    int maxLength = 100;
-    int maxTextLength = maxLength - availableSpace;
-    if (text.length > maxTextLength) {
-      return text.substring(0, maxTextLength - 3) + "...";
-    } else {
-      return text;
-    }
   }
 }
